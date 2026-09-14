@@ -5,7 +5,7 @@
   --vy-border: #30343b;
   --vy-text: #f1f0eb;
   --vy-muted: #a0a5ae;
-  --vy-accent: #e5ad62;
+  --vy-accent: #c4b5fd;
 
   --sl-font: 'IBM Plex Sans', 'IBM Plex Sans JP', sans-serif;
   --sl-font-mono: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;
@@ -17,7 +17,7 @@
   --sl-color-gray-5: var(--vy-border);
   --sl-color-gray-6: var(--vy-surface);
   --sl-color-black: var(--vy-background);
-  --sl-color-accent-low: #35291c;
+  --sl-color-accent-low: #2d263f;
   --sl-color-accent: var(--vy-accent);
   --sl-color-accent-high: var(--vy-accent);
   --sl-color-text: var(--vy-text);
