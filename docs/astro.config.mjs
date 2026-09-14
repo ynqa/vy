@@ -6,7 +6,7 @@ import remarkDocs from './src/plugins/remark-docs.mjs';
 const base = `/${(process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '')}`.replace(/\/?$/, '/');
 
 export default defineConfig({
-  site: process.env.SITE_URL,
+  site: process.env.SITE_URL || 'https://vy.ynqa.dev',
   base,
   trailingSlash: 'ignore',
   output: 'static',
