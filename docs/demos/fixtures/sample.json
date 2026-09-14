@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "api",
+      "status": "failed",
+      "duration_ms": 1200,
+      "message": "Connection failed\nRetry scheduled"
+    },
+    {
+      "name": "worker",
+      "status": "ok",
+      "duration_ms": 80,
+      "message": "Job completed"
+    }
+  ]
+}

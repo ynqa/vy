@@ -1,0 +1,38 @@
+--- a/evaluator.go
++++ b/evaluator.go
+@@ -92,6 +92,35 @@
+ 
+ 	// Setup the terminal session so we can start executing commands.
+ 	v.Setup()
++	// ttyd's canvas renderer predates DEC synchronized output (mode 2026).
++	// Defer rendering until the application has finished its whole frame.
++	_, err = v.Page.Eval(`() => {
++		const term = window.term;
++		// Forward Option/Alt shortcuts to the terminal on macOS.
++		term.options.macOptionIsMeta = true;
++		const render = term._core._renderService;
++		let timeout;
++		const resume = () => {
++			clearTimeout(timeout);
++			render._isPaused = false;
++			term.refresh(0, term.rows - 1);
++		};
++		term.parser.registerCsiHandler({ prefix: '?', final: 'h' }, params => {
++			if (params.length !== 1 || params[0] !== 2026) return false;
++			render._isPaused = true;
++			clearTimeout(timeout);
++			timeout = setTimeout(resume, 2000);
++			return true;
++		});
++		term.parser.registerCsiHandler({ prefix: '?', final: 'l' }, params => {
++			if (params.length !== 1 || params[0] !== 2026) return false;
++			resume();
++			return true;
++		});
++	}`)
++	if err != nil {
++		return []error{err}
++	}
+ 
+ 	// If the first command (after Settings and Outputs) is a Hide command, we can
+ 	// begin executing the commands before we start recording to avoid capturing

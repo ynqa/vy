@@ -1,0 +1,98 @@
+/* Brand tokens: change the palette and typography here. */
+:root {
+  --vy-background: #101113;
+  --vy-surface: #191b1f;
+  --vy-border: #30343b;
+  --vy-text: #f1f0eb;
+  --vy-muted: #a0a5ae;
+  --vy-accent: #e5ad62;
+
+  --sl-font: 'IBM Plex Sans', 'IBM Plex Sans JP', sans-serif;
+  --sl-font-mono: 'IBM Plex Mono', 'IBM Plex Sans JP', monospace;
+  --sl-color-white: var(--vy-text);
+  --sl-color-gray-1: #dfdfda;
+  --sl-color-gray-2: var(--vy-muted);
+  --sl-color-gray-3: #90959f;
+  --sl-color-gray-4: #606773;
+  --sl-color-gray-5: var(--vy-border);
+  --sl-color-gray-6: var(--vy-surface);
+  --sl-color-black: var(--vy-background);
+  --sl-color-accent-low: #35291c;
+  --sl-color-accent: var(--vy-accent);
+  --sl-color-accent-high: var(--vy-accent);
+  --sl-color-text: var(--vy-text);
+  --sl-color-text-invert: var(--vy-background);
+  --sl-color-bg-nav: var(--vy-background);
+  --sl-color-bg-sidebar: var(--vy-surface);
+  --sl-color-bg-inline-code: var(--vy-surface);
+  --sl-color-hairline: var(--vy-border);
+  --sl-color-hairline-light: var(--vy-border);
+  --sl-content-width: 48rem;
+  --sl-sidebar-width: 17rem;
+  --sl-nav-height: 4rem;
+  --sl-line-height: 1.85;
+  --sl-line-height-headings: 1.35;
+  color-scheme: dark;
+}
+
+::selection {
+  background: var(--vy-accent);
+  color: var(--vy-background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vy-accent);
+  outline-offset: 4px;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+.sl-markdown-content h2 {
+  padding-top: 0.5rem;
+}
+
+.sl-markdown-content :not(pre) > code {
+  border: 1px solid var(--vy-border);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.35em;
+  font-size: 0.875em;
+}
+
+.sl-markdown-content a {
+  text-underline-offset: 0.2em;
+}
+
+.sl-markdown-content table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.sl-markdown-content th,
+.sl-markdown-content td {
+  padding: 0.85rem 1rem;
+  min-width: 7rem;
+}
+
+.sl-markdown-content th {
+  background: var(--vy-surface);
+  white-space: nowrap;
+}
+
+.sl-markdown-content pre.mermaid {
+  overflow: auto;
+  padding: 1.5rem;
+  background: var(--vy-surface);
+  border: 1px solid var(--vy-border);
+  border-radius: 0.5rem;
+}
+
+pre.mermaid svg {
+  display: block;
+  height: auto;
+  margin-inline: auto;
+}

@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "name": "service-01",
+      "status": "ok",
+      "duration_ms": 120,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    },
+    {
+      "name": "service-02",
+      "status": "failed",
+      "duration_ms": 240,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    },
+    {
+      "name": "service-03",
+      "status": "ok",
+      "duration_ms": 360,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    },
+    {
+      "name": "service-04",
+      "status": "failed",
+      "duration_ms": 480,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    },
+    {
+      "name": "service-05",
+      "status": "ok",
+      "duration_ms": 600,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    },
+    {
+      "name": "service-06",
+      "status": "failed",
+      "duration_ms": 720,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    },
+    {
+      "name": "service-07",
+      "status": "ok",
+      "duration_ms": 840,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    },
+    {
+      "name": "service-08",
+      "status": "failed",
+      "duration_ms": 960,
+      "message": "Request completed. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. Additional diagnostic details are available for this operation. "
+    }
+  ]
+}

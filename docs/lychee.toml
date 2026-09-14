@@ -1,0 +1,10 @@
+# Install: brew install lychee
+# Run from docs/: pnpm build && pnpm check:links
+offline = true
+no_ignore = true
+root_dir = "dist"
+index_files = ["index.html"]
+include_fragments = "full"
+
+# For a build with BASE_PATH=/vy/:
+# pnpm check:links --remap '^(file://.*/dist)/vy([/#?].*)?$ $1$2'

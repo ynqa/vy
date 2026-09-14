@@ -1,0 +1,2001 @@
+{
+  "$id": "https://github.com/ynqa/vy/releases/download/v0.1.0/config.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "vy configuration",
+  "type": "object",
+  "properties": {
+    "version": {
+      "description": "Configuration format version, independent of the vy release version.\nOmitted versions are treated as version 1 for existing configurations.",
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0,
+      "default": 1,
+      "const": 1
+    },
+    "scroll_lines": {
+      "type": "integer",
+      "format": "uint",
+      "minimum": 1,
+      "default": 3
+    },
+    "keybinds": {
+      "default": {
+        "component": {
+          "document": {
+            "up": [
+              "K",
+              "ScrollUp",
+              "Up"
+            ],
+            "down": [
+              "Down",
+              "J",
+              "ScrollDown"
+            ],
+            "page_up": [
+              "Ctrl+B",
+              "PageUp"
+            ],
+            "page_down": [
+              "Ctrl+F",
+              "PageDown"
+            ],
+            "half_page_up": [
+              "Ctrl+U"
+            ],
+            "half_page_down": [
+              "Ctrl+D"
+            ],
+            "move_to_head": [
+              "G",
+              "Home"
+            ],
+            "move_to_tail": [
+              "End",
+              "Shift+G"
+            ],
+            "toggle": [
+              "Enter",
+              "LeftDown",
+              "Space"
+            ],
+            "expand_all": [
+              "E"
+            ],
+            "collapse_all": [
+              "Shift+E"
+            ],
+            "toggle_overflow_mode": [
+              "Z"
+            ],
+            "toggle_line_numbers": [
+              "Alt+N"
+            ]
+          },
+          "text_editor": {
+            "insert_newline": [
+              "Shift+Enter"
+            ],
+            "backward": [
+              "Ctrl+B",
+              "Left"
+            ],
+            "forward": [
+              "Ctrl+F",
+              "Right"
+            ],
+            "move_up": [
+              "Up"
+            ],
+            "move_down": [
+              "Down"
+            ],
+            "move_to_line_head": [
+              "Ctrl+A",
+              "Home"
+            ],
+            "move_to_line_tail": [
+              "Ctrl+E",
+              "End"
+            ],
+            "move_to_head": [
+              "Ctrl+Home"
+            ],
+            "move_to_tail": [
+              "Ctrl+End"
+            ],
+            "move_to_previous_nearest": [
+              "Alt+B",
+              "Ctrl+Left"
+            ],
+            "move_to_next_nearest": [
+              "Alt+F",
+              "Ctrl+Right"
+            ],
+            "erase": [
+              "Backspace",
+              "Ctrl+H"
+            ],
+            "erase_forward": [
+              "Ctrl+D",
+              "Delete"
+            ],
+            "erase_all": [
+              "Ctrl+U"
+            ],
+            "erase_to_previous_nearest": [
+              "Alt+Backspace",
+              "Ctrl+W"
+            ],
+            "erase_to_next_nearest": [
+              "Alt+D",
+              "Ctrl+Delete"
+            ]
+          }
+        },
+        "view": {
+          "browse": {
+            "input": {
+              "exit": [
+                "Ctrl+C",
+                "Esc"
+              ]
+            },
+            "focus": {
+              "back": [
+                "Esc"
+              ]
+            },
+            "toggle_focus": [
+              "Tab"
+            ],
+            "toggle_side_by_side": [
+              "S"
+            ],
+            "open_command_editor": [
+              ":",
+              "Shift+:"
+            ],
+            "close_command_editor": [
+              "Ctrl+C",
+              "Esc"
+            ],
+            "submit_command": [
+              "Enter"
+            ],
+            "complete_command": [
+              "Tab"
+            ],
+            "open_search_editor": [
+              "/"
+            ],
+            "close_search_editor": [
+              "Ctrl+C",
+              "Esc"
+            ],
+            "submit_search": [
+              "Enter"
+            ],
+            "older_search_history": [
+              "Up"
+            ],
+            "newer_search_history": [
+              "Down"
+            ],
+            "next_search": [
+              "N"
+            ],
+            "previous_search": [
+              "Shift+N"
+            ],
+            "collapse_or_move_to_parent": [
+              "H",
+              "Left"
+            ],
+            "move_to_parent": [
+              "Shift+H"
+            ],
+            "expand_or_move_to_first_child": [
+              "L",
+              "Right"
+            ],
+            "move_to_next_sibling": [
+              "Shift+J"
+            ],
+            "move_to_previous_sibling": [
+              "Shift+K"
+            ]
+          },
+          "help": {
+            "back": [
+              "Esc"
+            ]
+          },
+          "preview": {
+            "back": [
+              "Esc"
+            ],
+            "copy_selection": [
+              "Y"
+            ]
+          },
+          "hstr": {
+            "back": [
+              "Esc"
+            ],
+            "toggle_focus": [
+              "Tab"
+            ],
+            "recall_selection": [
+              "Enter",
+              "LeftDown"
+            ]
+          },
+          "flatten": {
+            "back": [
+              "Esc"
+            ],
+            "cancel_execution": [
+              "Ctrl+C"
+            ],
+            "execute_query": [
+              "Enter"
+            ],
+            "open_query_editor": [
+              ":",
+              "Shift+:"
+            ],
+            "close_query_editor": [
+              "Esc"
+            ],
+            "goto_selection": [
+              "Enter",
+              "LeftDown"
+            ]
+          },
+          "jaq": {
+            "back": [
+              "Esc"
+            ],
+            "cancel_execution": [
+              "Ctrl+C"
+            ],
+            "toggle_focus": [
+              "Tab"
+            ],
+            "toggle_side_by_side": [
+              "S"
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Keybinds"
+        }
+      ]
+    },
+    "theme": {
+      "default": {
+        "feedback": {
+          "label_style": "attr=bold",
+          "normal_style": "",
+          "loading_style": "fg=yellow",
+          "success_style": "fg=green",
+          "warning_style": "fg=yellow",
+          "error_style": "fg=red",
+          "hint_style": "fg=darkgrey"
+        },
+        "editor": {
+          "active_char_style": "attr=reverse"
+        },
+        "flatten": {
+          "match_style": "fg=yellow,attr=bold"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ThemeConfig"
+        }
+      ]
+    },
+    "json": {
+      "$ref": "#/definitions/JsonDisplayConfig"
+    },
+    "yaml": {
+      "$ref": "#/definitions/YamlDisplayConfig"
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "json",
+    "yaml"
+  ],
+  "definitions": {
+    "Keybinds": {
+      "type": "object",
+      "properties": {
+        "component": {
+          "default": {
+            "document": {
+              "up": [
+                "K",
+                "ScrollUp",
+                "Up"
+              ],
+              "down": [
+                "Down",
+                "J",
+                "ScrollDown"
+              ],
+              "page_up": [
+                "Ctrl+B",
+                "PageUp"
+              ],
+              "page_down": [
+                "Ctrl+F",
+                "PageDown"
+              ],
+              "half_page_up": [
+                "Ctrl+U"
+              ],
+              "half_page_down": [
+                "Ctrl+D"
+              ],
+              "move_to_head": [
+                "G",
+                "Home"
+              ],
+              "move_to_tail": [
+                "End",
+                "Shift+G"
+              ],
+              "toggle": [
+                "Enter",
+                "LeftDown",
+                "Space"
+              ],
+              "expand_all": [
+                "E"
+              ],
+              "collapse_all": [
+                "Shift+E"
+              ],
+              "toggle_overflow_mode": [
+                "Z"
+              ],
+              "toggle_line_numbers": [
+                "Alt+N"
+              ]
+            },
+            "text_editor": {
+              "insert_newline": [
+                "Shift+Enter"
+              ],
+              "backward": [
+                "Ctrl+B",
+                "Left"
+              ],
+              "forward": [
+                "Ctrl+F",
+                "Right"
+              ],
+              "move_up": [
+                "Up"
+              ],
+              "move_down": [
+                "Down"
+              ],
+              "move_to_line_head": [
+                "Ctrl+A",
+                "Home"
+              ],
+              "move_to_line_tail": [
+                "Ctrl+E",
+                "End"
+              ],
+              "move_to_head": [
+                "Ctrl+Home"
+              ],
+              "move_to_tail": [
+                "Ctrl+End"
+              ],
+              "move_to_previous_nearest": [
+                "Alt+B",
+                "Ctrl+Left"
+              ],
+              "move_to_next_nearest": [
+                "Alt+F",
+                "Ctrl+Right"
+              ],
+              "erase": [
+                "Backspace",
+                "Ctrl+H"
+              ],
+              "erase_forward": [
+                "Ctrl+D",
+                "Delete"
+              ],
+              "erase_all": [
+                "Ctrl+U"
+              ],
+              "erase_to_previous_nearest": [
+                "Alt+Backspace",
+                "Ctrl+W"
+              ],
+              "erase_to_next_nearest": [
+                "Alt+D",
+                "Ctrl+Delete"
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/ComponentKeybinds"
+            }
+          ]
+        },
+        "view": {
+          "default": {
+            "browse": {
+              "input": {
+                "exit": [
+                  "Ctrl+C",
+                  "Esc"
+                ]
+              },
+              "focus": {
+                "back": [
+                  "Esc"
+                ]
+              },
+              "toggle_focus": [
+                "Tab"
+              ],
+              "toggle_side_by_side": [
+                "S"
+              ],
+              "open_command_editor": [
+                ":",
+                "Shift+:"
+              ],
+              "close_command_editor": [
+                "Ctrl+C",
+                "Esc"
+              ],
+              "submit_command": [
+                "Enter"
+              ],
+              "complete_command": [
+                "Tab"
+              ],
+              "open_search_editor": [
+                "/"
+              ],
+              "close_search_editor": [
+                "Ctrl+C",
+                "Esc"
+              ],
+              "submit_search": [
+                "Enter"
+              ],
+              "older_search_history": [
+                "Up"
+              ],
+              "newer_search_history": [
+                "Down"
+              ],
+              "next_search": [
+                "N"
+              ],
+              "previous_search": [
+                "Shift+N"
+              ],
+              "collapse_or_move_to_parent": [
+                "H",
+                "Left"
+              ],
+              "move_to_parent": [
+                "Shift+H"
+              ],
+              "expand_or_move_to_first_child": [
+                "L",
+                "Right"
+              ],
+              "move_to_next_sibling": [
+                "Shift+J"
+              ],
+              "move_to_previous_sibling": [
+                "Shift+K"
+              ]
+            },
+            "help": {
+              "back": [
+                "Esc"
+              ]
+            },
+            "preview": {
+              "back": [
+                "Esc"
+              ],
+              "copy_selection": [
+                "Y"
+              ]
+            },
+            "hstr": {
+              "back": [
+                "Esc"
+              ],
+              "toggle_focus": [
+                "Tab"
+              ],
+              "recall_selection": [
+                "Enter",
+                "LeftDown"
+              ]
+            },
+            "flatten": {
+              "back": [
+                "Esc"
+              ],
+              "cancel_execution": [
+                "Ctrl+C"
+              ],
+              "execute_query": [
+                "Enter"
+              ],
+              "open_query_editor": [
+                ":",
+                "Shift+:"
+              ],
+              "close_query_editor": [
+                "Esc"
+              ],
+              "goto_selection": [
+                "Enter",
+                "LeftDown"
+              ]
+            },
+            "jaq": {
+              "back": [
+                "Esc"
+              ],
+              "cancel_execution": [
+                "Ctrl+C"
+              ],
+              "toggle_focus": [
+                "Tab"
+              ],
+              "toggle_side_by_side": [
+                "S"
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/ViewKeybinds"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ComponentKeybinds": {
+      "type": "object",
+      "properties": {
+        "document": {
+          "default": {
+            "up": [
+              "K",
+              "ScrollUp",
+              "Up"
+            ],
+            "down": [
+              "Down",
+              "J",
+              "ScrollDown"
+            ],
+            "page_up": [
+              "Ctrl+B",
+              "PageUp"
+            ],
+            "page_down": [
+              "Ctrl+F",
+              "PageDown"
+            ],
+            "half_page_up": [
+              "Ctrl+U"
+            ],
+            "half_page_down": [
+              "Ctrl+D"
+            ],
+            "move_to_head": [
+              "G",
+              "Home"
+            ],
+            "move_to_tail": [
+              "End",
+              "Shift+G"
+            ],
+            "toggle": [
+              "Enter",
+              "LeftDown",
+              "Space"
+            ],
+            "expand_all": [
+              "E"
+            ],
+            "collapse_all": [
+              "Shift+E"
+            ],
+            "toggle_overflow_mode": [
+              "Z"
+            ],
+            "toggle_line_numbers": [
+              "Alt+N"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/DocumentKeybinds"
+            }
+          ]
+        },
+        "text_editor": {
+          "default": {
+            "insert_newline": [
+              "Shift+Enter"
+            ],
+            "backward": [
+              "Ctrl+B",
+              "Left"
+            ],
+            "forward": [
+              "Ctrl+F",
+              "Right"
+            ],
+            "move_up": [
+              "Up"
+            ],
+            "move_down": [
+              "Down"
+            ],
+            "move_to_line_head": [
+              "Ctrl+A",
+              "Home"
+            ],
+            "move_to_line_tail": [
+              "Ctrl+E",
+              "End"
+            ],
+            "move_to_head": [
+              "Ctrl+Home"
+            ],
+            "move_to_tail": [
+              "Ctrl+End"
+            ],
+            "move_to_previous_nearest": [
+              "Alt+B",
+              "Ctrl+Left"
+            ],
+            "move_to_next_nearest": [
+              "Alt+F",
+              "Ctrl+Right"
+            ],
+            "erase": [
+              "Backspace",
+              "Ctrl+H"
+            ],
+            "erase_forward": [
+              "Ctrl+D",
+              "Delete"
+            ],
+            "erase_all": [
+              "Ctrl+U"
+            ],
+            "erase_to_previous_nearest": [
+              "Alt+Backspace",
+              "Ctrl+W"
+            ],
+            "erase_to_next_nearest": [
+              "Alt+D",
+              "Ctrl+Delete"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/TextEditorKeybinds"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "DocumentKeybinds": {
+      "type": "object",
+      "properties": {
+        "up": {
+          "default": [
+            "K",
+            "ScrollUp",
+            "Up"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "down": {
+          "default": [
+            "Down",
+            "J",
+            "ScrollDown"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "page_up": {
+          "default": [
+            "Ctrl+B",
+            "PageUp"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "page_down": {
+          "default": [
+            "Ctrl+F",
+            "PageDown"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "half_page_up": {
+          "default": [
+            "Ctrl+U"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "half_page_down": {
+          "default": [
+            "Ctrl+D"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_head": {
+          "default": [
+            "G",
+            "Home"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_tail": {
+          "default": [
+            "End",
+            "Shift+G"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "toggle": {
+          "default": [
+            "Enter",
+            "LeftDown",
+            "Space"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "expand_all": {
+          "default": [
+            "E"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "collapse_all": {
+          "default": [
+            "Shift+E"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "toggle_overflow_mode": {
+          "default": [
+            "Z"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "toggle_line_numbers": {
+          "default": [
+            "Alt+N"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "KeyBinding": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "TextEditorKeybinds": {
+      "type": "object",
+      "properties": {
+        "insert_newline": {
+          "default": [
+            "Shift+Enter"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "backward": {
+          "default": [
+            "Ctrl+B",
+            "Left"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "forward": {
+          "default": [
+            "Ctrl+F",
+            "Right"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_up": {
+          "default": [
+            "Up"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_down": {
+          "default": [
+            "Down"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_line_head": {
+          "default": [
+            "Ctrl+A",
+            "Home"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_line_tail": {
+          "default": [
+            "Ctrl+E",
+            "End"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_head": {
+          "default": [
+            "Ctrl+Home"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_tail": {
+          "default": [
+            "Ctrl+End"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_previous_nearest": {
+          "default": [
+            "Alt+B",
+            "Ctrl+Left"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_next_nearest": {
+          "default": [
+            "Alt+F",
+            "Ctrl+Right"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "erase": {
+          "default": [
+            "Backspace",
+            "Ctrl+H"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "erase_forward": {
+          "default": [
+            "Ctrl+D",
+            "Delete"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "erase_all": {
+          "default": [
+            "Ctrl+U"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "erase_to_previous_nearest": {
+          "default": [
+            "Alt+Backspace",
+            "Ctrl+W"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "erase_to_next_nearest": {
+          "default": [
+            "Alt+D",
+            "Ctrl+Delete"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ViewKeybinds": {
+      "type": "object",
+      "properties": {
+        "browse": {
+          "default": {
+            "input": {
+              "exit": [
+                "Ctrl+C",
+                "Esc"
+              ]
+            },
+            "focus": {
+              "back": [
+                "Esc"
+              ]
+            },
+            "toggle_focus": [
+              "Tab"
+            ],
+            "toggle_side_by_side": [
+              "S"
+            ],
+            "open_command_editor": [
+              ":",
+              "Shift+:"
+            ],
+            "close_command_editor": [
+              "Ctrl+C",
+              "Esc"
+            ],
+            "submit_command": [
+              "Enter"
+            ],
+            "complete_command": [
+              "Tab"
+            ],
+            "open_search_editor": [
+              "/"
+            ],
+            "close_search_editor": [
+              "Ctrl+C",
+              "Esc"
+            ],
+            "submit_search": [
+              "Enter"
+            ],
+            "older_search_history": [
+              "Up"
+            ],
+            "newer_search_history": [
+              "Down"
+            ],
+            "next_search": [
+              "N"
+            ],
+            "previous_search": [
+              "Shift+N"
+            ],
+            "collapse_or_move_to_parent": [
+              "H",
+              "Left"
+            ],
+            "move_to_parent": [
+              "Shift+H"
+            ],
+            "expand_or_move_to_first_child": [
+              "L",
+              "Right"
+            ],
+            "move_to_next_sibling": [
+              "Shift+J"
+            ],
+            "move_to_previous_sibling": [
+              "Shift+K"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/BrowseViewKeybinds"
+            }
+          ]
+        },
+        "help": {
+          "default": {
+            "back": [
+              "Esc"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/HelpViewKeybinds"
+            }
+          ]
+        },
+        "preview": {
+          "default": {
+            "back": [
+              "Esc"
+            ],
+            "copy_selection": [
+              "Y"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/PreviewViewKeybinds"
+            }
+          ]
+        },
+        "hstr": {
+          "default": {
+            "back": [
+              "Esc"
+            ],
+            "toggle_focus": [
+              "Tab"
+            ],
+            "recall_selection": [
+              "Enter",
+              "LeftDown"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/HstrViewKeybinds"
+            }
+          ]
+        },
+        "flatten": {
+          "default": {
+            "back": [
+              "Esc"
+            ],
+            "cancel_execution": [
+              "Ctrl+C"
+            ],
+            "execute_query": [
+              "Enter"
+            ],
+            "open_query_editor": [
+              ":",
+              "Shift+:"
+            ],
+            "close_query_editor": [
+              "Esc"
+            ],
+            "goto_selection": [
+              "Enter",
+              "LeftDown"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/FlattenViewKeybinds"
+            }
+          ]
+        },
+        "jaq": {
+          "default": {
+            "back": [
+              "Esc"
+            ],
+            "cancel_execution": [
+              "Ctrl+C"
+            ],
+            "toggle_focus": [
+              "Tab"
+            ],
+            "toggle_side_by_side": [
+              "S"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/JaqViewKeybinds"
+            }
+          ]
+        },
+        "jq": {
+          "default": {
+            "back": [
+              "Esc"
+            ],
+            "cancel_execution": [
+              "Ctrl+C"
+            ],
+            "toggle_focus": [
+              "Tab"
+            ],
+            "toggle_side_by_side": [
+              "S"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/JaqViewKeybinds"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "not": {
+        "required": [
+          "jaq",
+          "jq"
+        ]
+      }
+    },
+    "BrowseViewKeybinds": {
+      "description": "Navigation, commands, and search shared by input and focus views.",
+      "type": "object",
+      "properties": {
+        "input": {
+          "default": {
+            "exit": [
+              "Ctrl+C",
+              "Esc"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/BrowseInputKeybinds"
+            }
+          ]
+        },
+        "focus": {
+          "default": {
+            "back": [
+              "Esc"
+            ]
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/BrowseFocusKeybinds"
+            }
+          ]
+        },
+        "toggle_focus": {
+          "default": [
+            "Tab"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "toggle_side_by_side": {
+          "default": [
+            "S"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "open_command_editor": {
+          "default": [
+            ":",
+            "Shift+:"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "close_command_editor": {
+          "default": [
+            "Ctrl+C",
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "submit_command": {
+          "default": [
+            "Enter"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "complete_command": {
+          "default": [
+            "Tab"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "open_search_editor": {
+          "default": [
+            "/"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "close_search_editor": {
+          "default": [
+            "Ctrl+C",
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "submit_search": {
+          "default": [
+            "Enter"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "older_search_history": {
+          "default": [
+            "Up"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "newer_search_history": {
+          "default": [
+            "Down"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "next_search": {
+          "default": [
+            "N"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "previous_search": {
+          "default": [
+            "Shift+N"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "collapse_or_move_to_parent": {
+          "default": [
+            "H",
+            "Left"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_parent": {
+          "default": [
+            "Shift+H"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "expand_or_move_to_first_child": {
+          "default": [
+            "L",
+            "Right"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_next_sibling": {
+          "default": [
+            "Shift+J"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "move_to_previous_sibling": {
+          "default": [
+            "Shift+K"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "BrowseInputKeybinds": {
+      "type": "object",
+      "properties": {
+        "exit": {
+          "default": [
+            "Ctrl+C",
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "BrowseFocusKeybinds": {
+      "description": "Returning from a focused view has its own binding.",
+      "type": "object",
+      "properties": {
+        "back": {
+          "default": [
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "HelpViewKeybinds": {
+      "type": "object",
+      "properties": {
+        "back": {
+          "default": [
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "PreviewViewKeybinds": {
+      "type": "object",
+      "properties": {
+        "back": {
+          "default": [
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "copy_selection": {
+          "default": [
+            "Y"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "HstrViewKeybinds": {
+      "type": "object",
+      "properties": {
+        "back": {
+          "default": [
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "toggle_focus": {
+          "default": [
+            "Tab"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "recall_selection": {
+          "default": [
+            "Enter",
+            "LeftDown"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "FlattenViewKeybinds": {
+      "type": "object",
+      "properties": {
+        "back": {
+          "default": [
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "cancel_execution": {
+          "default": [
+            "Ctrl+C"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "execute_query": {
+          "default": [
+            "Enter"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "open_query_editor": {
+          "default": [
+            ":",
+            "Shift+:"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "close_query_editor": {
+          "default": [
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "goto_selection": {
+          "default": [
+            "Enter",
+            "LeftDown"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "JaqViewKeybinds": {
+      "type": "object",
+      "properties": {
+        "back": {
+          "default": [
+            "Esc"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "cancel_execution": {
+          "default": [
+            "Ctrl+C"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "toggle_focus": {
+          "default": [
+            "Tab"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        },
+        "toggle_side_by_side": {
+          "default": [
+            "S"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/definitions/KeyBinding"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ThemeConfig": {
+      "type": "object",
+      "properties": {
+        "feedback": {
+          "default": {
+            "label_style": "attr=bold",
+            "normal_style": "",
+            "loading_style": "fg=yellow",
+            "success_style": "fg=green",
+            "warning_style": "fg=yellow",
+            "error_style": "fg=red",
+            "hint_style": "fg=darkgrey"
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/FeedbackThemeConfig"
+            }
+          ]
+        },
+        "editor": {
+          "default": {
+            "active_char_style": "attr=reverse"
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/EditorThemeConfig"
+            }
+          ]
+        },
+        "flatten": {
+          "default": {
+            "match_style": "fg=yellow,attr=bold"
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/FlattenThemeConfig"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "FeedbackThemeConfig": {
+      "type": "object",
+      "properties": {
+        "label_style": {
+          "type": "string",
+          "default": "attr=bold"
+        },
+        "normal_style": {
+          "type": "string",
+          "default": ""
+        },
+        "loading_style": {
+          "type": "string",
+          "default": "fg=yellow"
+        },
+        "success_style": {
+          "type": "string",
+          "default": "fg=green"
+        },
+        "warning_style": {
+          "type": "string",
+          "default": "fg=yellow"
+        },
+        "error_style": {
+          "type": "string",
+          "default": "fg=red"
+        },
+        "hint_style": {
+          "type": "string",
+          "default": "fg=darkgrey"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EditorThemeConfig": {
+      "type": "object",
+      "properties": {
+        "active_char_style": {
+          "type": "string",
+          "default": "attr=reverse"
+        }
+      },
+      "additionalProperties": false
+    },
+    "FlattenThemeConfig": {
+      "type": "object",
+      "properties": {
+        "match_style": {
+          "type": "string",
+          "default": "fg=yellow,attr=bold"
+        }
+      },
+      "additionalProperties": false
+    },
+    "JsonDisplayConfig": {
+      "type": "object",
+      "properties": {
+        "curly_brackets_style": {
+          "description": "Style for {}.",
+          "type": "string",
+          "default": ""
+        },
+        "square_brackets_style": {
+          "description": "Style for [].",
+          "type": "string",
+          "default": ""
+        },
+        "key_style": {
+          "description": "Style for \"key\".",
+          "type": "string",
+          "default": ""
+        },
+        "string_value_style": {
+          "description": "Style for string values.",
+          "type": "string",
+          "default": ""
+        },
+        "number_value_style": {
+          "description": "Style for number values.",
+          "type": "string",
+          "default": ""
+        },
+        "boolean_value_style": {
+          "description": "Style for boolean values.",
+          "type": "string",
+          "default": ""
+        },
+        "null_value_style": {
+          "description": "Style for null values.",
+          "type": "string",
+          "default": ""
+        },
+        "active_item_attribute": {
+          "description": "Attribute for the selected line.",
+          "type": "string",
+          "default": "nobold"
+        },
+        "inactive_item_attribute": {
+          "description": "Attribute for unselected lines.",
+          "type": "string",
+          "default": "nobold"
+        },
+        "indent": {
+          "description": "The number of spaces used for indentation in the rendered JSON structure.\nThis value multiplies with the indentation level of a JSON element to determine\nthe total indentation space. For example, an `indent` value of 4 means each\nindentation level will be 4 spaces wide.",
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0,
+          "default": 0
+        },
+        "overflow_mode": {
+          "description": "Rendering behavior when a line exceeds the terminal width.",
+          "default": "Truncate",
+          "allOf": [
+            {
+              "$ref": "#/definitions/JsonOverflowMode"
+            }
+          ]
+        },
+        "lines": {
+          "description": "Number of lines available for rendering.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint",
+          "minimum": 0,
+          "default": null
+        },
+        "show_line_numbers": {
+          "description": "Whether to display stable one-based line numbers to the left of the content.",
+          "type": "boolean",
+          "default": false
+        },
+        "show_child_count": {
+          "description": "Display immediate child counts next to collapsed and empty containers.\nDisabled by default; changing this does not change folding state.",
+          "type": "boolean",
+          "default": false
+        },
+        "child_count_style": {
+          "description": "Style for child count annotations, such as ` (3 items)` or ` (2 keys)`.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "JsonOverflowMode": {
+      "type": "string",
+      "enum": [
+        "Truncate",
+        "Wrap"
+      ]
+    },
+    "YamlDisplayConfig": {
+      "type": "object",
+      "properties": {
+        "map_style": {
+          "description": "Style for `{}` and `{...}`.",
+          "type": "string",
+          "default": ""
+        },
+        "sequence_style": {
+          "description": "Style for `[]` and `[...]`.",
+          "type": "string",
+          "default": ""
+        },
+        "key_style": {
+          "description": "Style for YAML keys.",
+          "type": "string",
+          "default": ""
+        },
+        "tag_style": {
+          "description": "Style for YAML tags, such as `!MyTag`.",
+          "type": "string",
+          "default": ""
+        },
+        "string_style": {
+          "description": "Style for string values.",
+          "type": "string",
+          "default": ""
+        },
+        "number_style": {
+          "description": "Style for number values.",
+          "type": "string",
+          "default": ""
+        },
+        "boolean_style": {
+          "description": "Style for boolean values.",
+          "type": "string",
+          "default": ""
+        },
+        "null_style": {
+          "description": "Style for null values.",
+          "type": "string",
+          "default": ""
+        },
+        "active_item_attribute": {
+          "description": "Attribute for the selected line.",
+          "type": "string",
+          "default": "nobold"
+        },
+        "inactive_item_attribute": {
+          "description": "Attribute for unselected lines.",
+          "type": "string",
+          "default": "nobold"
+        },
+        "indent": {
+          "description": "The number of spaces used for indentation in the rendered YAML structure.",
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0,
+          "default": 2
+        },
+        "overflow_mode": {
+          "description": "Rendering behavior when a line exceeds the terminal width.",
+          "default": "Truncate",
+          "allOf": [
+            {
+              "$ref": "#/definitions/YamlOverflowMode"
+            }
+          ]
+        },
+        "lines": {
+          "description": "Number of lines available for rendering.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "uint",
+          "minimum": 0,
+          "default": null
+        },
+        "show_line_numbers": {
+          "description": "Whether to display stable one-based line numbers to the left of the content.",
+          "type": "boolean",
+          "default": false
+        },
+        "show_child_count": {
+          "description": "Display immediate child counts next to collapsed and empty containers.\nDisabled by default; changing this does not change folding state.",
+          "type": "boolean",
+          "default": false
+        },
+        "child_count_style": {
+          "description": "Style for child count annotations, such as ` (3 items)` or ` (2 keys)`.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "YamlOverflowMode": {
+      "type": "string",
+      "enum": [
+        "Truncate",
+        "Wrap"
+      ]
+    }
+  }
+}

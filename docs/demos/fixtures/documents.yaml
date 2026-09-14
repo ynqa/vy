@@ -1,0 +1,7 @@
+metadata:
+  name: api
+status: failed
+---
+metadata:
+  name: worker
+status: ok

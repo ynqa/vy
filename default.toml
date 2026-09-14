@@ -1,0 +1,227 @@
+#:schema https://github.com/ynqa/vy/releases/download/v0.1.0/config.schema.json
+
+# Configuration format version, independent of the vy release version.
+# Existing files without this key are treated as version 1.
+version = 1
+
+# Value notation used throughout this configuration
+#
+# Every shortcut value under [keybinds] uses termcfg shortcut notation:
+# zero or more modifiers joined by "+", followed by a key or mouse event.
+# Examples: "Ctrl+C", "Shift+G", "ScrollUp", and "LeftDown".
+#
+# Every `*_style` value in [theme], [json], and [yaml] uses termcfg style notation:
+# fg=<color>,bg=<color>,ul=<color>,attr=<attribute>
+# Example: "fg=red,bg=#112233,attr=bold|italic".
+
+# Number of lines moved by each mouse scroll event
+scroll_lines = 3
+
+# Shared component keybindings
+[keybinds.component.document]
+# Move the active document item up or down
+up = ["k", "Up", "ScrollUp"]
+down = ["j", "Down", "ScrollDown"]
+# Move by a full or half page
+page_up = ["PageUp", "Ctrl+B"]
+page_down = ["PageDown", "Ctrl+F"]
+half_page_up = ["Ctrl+U"]
+half_page_down = ["Ctrl+D"]
+# Move to the first or last document item
+move_to_head = ["g", "Home"]
+move_to_tail = ["Shift+G", "End"]
+# Expand or collapse the active item; mouse clicks operate on the clicked item
+toggle = ["Space", "Enter", "LeftDown"]
+expand_all = ["e"]
+collapse_all = ["Shift+E"]
+# Toggle document display settings
+toggle_overflow_mode = ["z"]
+toggle_line_numbers = ["Alt+N"]
+
+[keybinds.component.text_editor]
+# Insert a newline while keeping Enter available for submit or execute
+insert_newline = ["Shift+Enter"]
+# Move through the focused editor
+backward = ["Left", "Ctrl+B"]
+forward = ["Right", "Ctrl+F"]
+move_up = ["Up"]
+move_down = ["Down"]
+move_to_line_head = ["Home", "Ctrl+A"]
+move_to_line_tail = ["End", "Ctrl+E"]
+move_to_head = ["Ctrl+Home"]
+move_to_tail = ["Ctrl+End"]
+# Word boundaries use jaq delimiters: . | ( ) [ ]
+move_to_previous_nearest = ["Alt+B", "Ctrl+Left"]
+move_to_next_nearest = ["Alt+F", "Ctrl+Right"]
+# Erase text in the focused command editor
+erase = ["Backspace", "Ctrl+H"]
+erase_forward = ["Delete", "Ctrl+D"]
+erase_all = ["Ctrl+U"]
+erase_to_previous_nearest = ["Ctrl+W", "Alt+Backspace"]
+erase_to_next_nearest = ["Alt+D", "Ctrl+Delete"]
+
+# Standalone view keybindings
+# Shared browsing operations for input and focus views
+[keybinds.view.browse]
+# Compare focused data with its input and switch panes
+toggle_focus = ["Tab"]
+toggle_side_by_side = ["s"]
+# Open or close the command editor
+# In jaq, prefill the current query; submitting jaq updates the same view.
+open_command_editor = [":", "Shift+:"]
+close_command_editor = ["Esc", "Ctrl+C"]
+# Submit or complete the command editor
+submit_command = ["Enter"]
+complete_command = ["Tab"]
+# Search the current browsing scope, including folded descendants
+open_search_editor = ["/"]
+close_search_editor = ["Esc", "Ctrl+C"]
+submit_search = ["Enter"]
+# Recall search history while editing; these override editor up/down bindings
+older_search_history = ["Up"]
+newer_search_history = ["Down"]
+next_search = ["n"]
+previous_search = ["Shift+N"]
+# Move by document structure
+collapse_or_move_to_parent = ["h", "Left"]
+move_to_parent = ["Shift+H"]
+expand_or_move_to_first_child = ["l", "Right"]
+move_to_next_sibling = ["Shift+J"]
+move_to_previous_sibling = ["Shift+K"]
+
+[keybinds.view.browse.input]
+# Exit from the input document
+exit = ["Esc", "Ctrl+C"]
+
+# Return from focus to the previous view
+[keybinds.view.browse.focus]
+back = ["Esc"]
+
+[keybinds.view.preview]
+# Return from the read-only text preview
+back = ["Esc"]
+# Copy the text selected with a left-button drag
+copy_selection = ["y"]
+
+[keybinds.view.help]
+# Return to the previous view
+back = ["Esc"]
+
+[keybinds.view.hstr]
+# Return to the previous view
+back = ["Esc"]
+# Switch between the history filter editor and result list
+toggle_focus = ["Tab"]
+# Recall the selected command into the command editor
+recall_selection = ["Enter", "LeftDown"]
+
+[keybinds.view.flatten]
+# Return to the previous view
+back = ["Esc"]
+# Cancel the running grep execution
+cancel_execution = ["Ctrl+C"]
+# Execute the query in the focused editor
+execute_query = ["Enter"]
+# Open or close the grep query editor
+open_query_editor = [":", "Shift+:"]
+close_query_editor = ["Esc"]
+# Go to the selected result in the input document
+goto_selection = ["Enter", "LeftDown"]
+
+[keybinds.view.jaq]
+# Return to the previous view
+back = ["Esc"]
+# Cancel the running jaq execution
+cancel_execution = ["Ctrl+C"]
+# Query editing uses keybinds.view.browse command editor bindings.
+# Switch focus between the jaq result and input in side-by-side mode
+toggle_focus = ["Tab"]
+# Compare the jaq result with its input
+toggle_side_by_side = ["s"]
+
+# Styles for feedback labels, status messages, and hints.
+# Named ANSI colors are resolved through the terminal's color palette.
+[theme.feedback]
+label_style = "attr=bold"
+normal_style = ""
+loading_style = "fg=yellow"
+success_style = "fg=green"
+warning_style = "fg=yellow"
+error_style = "fg=red"
+hint_style = "fg=darkgrey"
+
+# Style applied to the character under the cursor in command, history, jaq, and grep editors.
+[theme.editor]
+active_char_style = "attr=reverse"
+
+# Style applied to text matched by a flatten grep query.
+[theme.flatten]
+match_style = "fg=yellow,attr=bold"
+
+# JSON display settings
+[json]
+# Number of spaces used for each indentation level
+indent = 2
+# Style applied to curly brackets (`{` and `}`)
+curly_brackets_style = "attr=bold"
+# Style applied to square brackets (`[` and `]`)
+square_brackets_style = "attr=bold"
+# Style applied to object keys
+key_style = "fg=darkblue"
+# Style applied to string values
+string_value_style = "fg=darkgreen"
+# Style applied to number values
+number_value_style = ""
+# Style applied to boolean values
+boolean_value_style = ""
+# Style applied to null values
+null_value_style = "fg=darkgrey"
+# Attribute applied to the active item
+active_item_attribute = "bold"
+# Attribute applied to inactive items
+inactive_item_attribute = "dim"
+# How content wider than the viewport is displayed: "Wrap" or "Truncate"
+overflow_mode = "Wrap"
+# Maximum number of lines to render; omit to render all lines
+# lines = 20
+# Whether to display line numbers
+show_line_numbers = true
+# Show immediate child counts beside collapsed and empty containers
+show_child_count = true
+# Style applied to child count annotations
+child_count_style = "fg=darkgrey"
+
+# YAML display settings
+[yaml]
+# Number of spaces used for each indentation level
+indent = 2
+# Style applied to mappings
+map_style = "attr=bold"
+# Style applied to sequences
+sequence_style = "attr=bold"
+# Style applied to mapping keys
+key_style = "fg=darkblue"
+# Style applied to tags
+tag_style = "fg=darkyellow"
+# Style applied to strings
+string_style = "fg=darkgreen"
+# Style applied to numbers
+number_style = ""
+# Style applied to boolean values
+boolean_style = ""
+# Style applied to null values
+null_style = "fg=darkgrey"
+# Attribute applied to the active item
+active_item_attribute = "bold"
+# Attribute applied to inactive items
+inactive_item_attribute = "dim"
+# How content wider than the viewport is displayed: "Wrap" or "Truncate"
+overflow_mode = "Wrap"
+# Maximum number of lines to render; omit to render all lines
+# lines = 20
+# Whether to display line numbers
+show_line_numbers = true
+# Show immediate child counts beside collapsed and empty containers
+show_child_count = true
+# Style applied to child count annotations
+child_count_style = "fg=darkgrey"

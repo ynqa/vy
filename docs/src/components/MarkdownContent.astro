@@ -1,0 +1,30 @@
+---
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+---
+
+<Default><slot /></Default>
+
+<script>
+  const diagrams = document.querySelectorAll<HTMLElement>('pre.mermaid');
+  if (diagrams.length) {
+    const { default: mermaid } = await import('mermaid');
+    await document.fonts.ready;
+    const styles = getComputedStyle(document.documentElement);
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      themeVariables: {
+        darkMode: true,
+        fontFamily: styles.getPropertyValue('--sl-font'),
+        primaryColor: styles.getPropertyValue('--vy-surface').trim(),
+        primaryTextColor: styles.getPropertyValue('--vy-text').trim(),
+        primaryBorderColor: styles.getPropertyValue('--vy-accent').trim(),
+        lineColor: styles.getPropertyValue('--vy-muted').trim(),
+        secondaryColor: styles.getPropertyValue('--vy-background').trim(),
+        tertiaryColor: styles.getPropertyValue('--vy-surface').trim(),
+      },
+    });
+    await mermaid.run({ nodes: diagrams });
+  }
+</script>
