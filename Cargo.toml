@@ -1,5 +1,5 @@
 [package]
-name = "vy"
+name = "vy-cli"
 version = "0.1.0"
 authors = ["ynqa <un.pensiero.vano@gmail.com>"]
 edition = "2024"
@@ -8,6 +8,10 @@ repository = "https://github.com/ynqa/vy"
 homepage = "https://vy.ynqa.dev"
 license = "MIT"
 readme = "README.md"
+
+[[bin]]
+name = "vy"
+path = "src/main.rs"
 
 [dependencies]
 anyhow = "1.0.104"
@@ -51,6 +55,7 @@ codegen-units = 1
 lto = true
 
 [package.metadata.dist]
+formula = "vy"
 include = ["default.toml", "config.schema.json"]
 
 [[package.metadata.dist.extra-artifacts]]

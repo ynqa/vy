@@ -16,7 +16,7 @@ brew install ynqa/tap/vy
 ### Shell installer
 
 ```sh
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/ynqa/vy/releases/latest/download/vy-installer.sh | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/ynqa/vy/releases/latest/download/vy-cli-installer.sh | sh
 ```
 
 ### Cargo
@@ -24,8 +24,10 @@ curl --proto '=https' --tlsv1.2 -LsSf https://github.com/ynqa/vy/releases/latest
 If you have Rust and Cargo installed, run:
 
 ```sh
-cargo install vy --locked
+cargo install vy-cli --locked
 ```
+
+The Cargo package is named `vy-cli`; the installed command is `vy`.
 
 Add Cargo's installation `bin` directory to your `PATH`. The default location is `~/.cargo/bin`.
 
