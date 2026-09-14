@@ -8,6 +8,14 @@ repository = "https://github.com/ynqa/vy"
 homepage = "https://vy.ynqa.dev"
 license = "MIT"
 readme = "README.md"
+include = [
+    "/src/**",
+    "/default.toml",
+    "/config.schema.json",
+    "/README.md",
+    "/LICENSE",
+    "/Cargo.lock",
+]
 
 [[bin]]
 name = "vy"
