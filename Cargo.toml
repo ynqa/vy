@@ -17,8 +17,7 @@ grep-regex = "0.1.14"
 jaq-all = "0.3.0"
 jaq-json = { version = "2.0.2", default-features = false, features = ["sync"] }
 nucleo-matcher = "0.3.1"
-# Use the local 0.17.0 implementation until it is published to crates.io.
-promkit = { path = "../promkit/promkit", version = "0.17.0", features = [
+promkit = { version = "0.17.0", features = [
     "json",
     "prefixsearch",
     "serde",

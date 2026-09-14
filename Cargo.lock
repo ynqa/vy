@@ -1040,6 +1040,8 @@ dependencies = [
 [[package]]
 name = "promkit"
 version = "0.17.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d9f0c4af8c120b8d01913b8d4cbc27c6359a8614c250f5217503a3b0471a9c66"
 dependencies = [
  "bitflags 2.13.1",
  "crossterm",
@@ -1050,6 +1052,8 @@ dependencies = [
 [[package]]
 name = "promkit-core"
 version = "0.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6969944b31c2e01c8772aad675549cf8ca03e634978f592c4e278476057188cf"
 dependencies = [
  "anyhow",
  "crossbeam-skiplist",
@@ -1061,6 +1065,8 @@ dependencies = [
 [[package]]
 name = "promkit-widgets"
 version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "981305949b8e23913f4a181f870ed0b79dc12b5c6696d53cdc8c707d60925339"
 dependencies = [
  "anyhow",
  "promkit-core",
