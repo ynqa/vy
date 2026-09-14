@@ -202,8 +202,10 @@ mod tests {
         let nested = directory.0.join("日本語 files");
         fs::create_dir(&nested).unwrap();
         fs::write(nested.join("result file.json"), "{}").unwrap();
-        for quote in ["\"", "'"] {
-            let prefix = format!("{quote}{}/日本語 ", directory.0.display());
+        let path_prefix = format!("{}/日本語 ", directory.0.display());
+        let mut double_quoted_prefix = serde_json::to_string(&path_prefix).unwrap();
+        double_quoted_prefix.pop();
+        for prefix in [double_quoted_prefix, format!("'{path_prefix}")] {
             assert_eq!(request(&prefix, prefix.chars().count()).candidates.len(), 1);
         }
         let input = format!("{}/日", directory.0.display());
@@ -222,8 +224,9 @@ mod tests {
                 .candidates
                 .is_empty()
         );
-        let new_file = format!(r#""{}/not created.json""#, nested.display());
-        assert!(parse(&new_file).is_ok());
+        let destination = nested.join("not created.json");
+        let new_file = serde_json::to_string(&destination).unwrap();
+        assert_eq!(parse(&new_file).unwrap().destination, destination);
         assert!(
             request(&new_file, new_file.chars().count())
                 .candidates
@@ -239,10 +242,15 @@ mod tests {
             let prefix = format!("  {}/res", directory.0.display());
             let input = format!("{prefix}typo.json{suffix}");
             let request = request(&input, prefix.chars().count());
+            assert_eq!(request.candidates.len(), 1);
+            let completed = replace(&input, &request, 0);
+            assert!(completed.starts_with("  "));
+            let (destination, target) = file_path::split_prefix(&completed);
             assert_eq!(
-                replace(&input, &request, 0),
-                format!("  {}/result.json{suffix}", directory.0.display())
+                file_path::parse(destination).unwrap(),
+                directory.0.join("result.json")
             );
+            assert_eq!(target, suffix);
         }
     }
 
