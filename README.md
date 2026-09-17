@@ -6,6 +6,8 @@
 
 Explore and query JSON and YAML, right in your terminal.
 
+![Navigate with goto, open a subtree with focus, and compare jaq input and results](docs/public/demos/index.gif)
+
 ## Documentation
 
 Visit the [documentation](https://vy.ynqa.dev) for installation instructions, usage guides, and reference documentation.
