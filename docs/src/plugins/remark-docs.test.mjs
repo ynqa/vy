@@ -10,6 +10,19 @@ test('resolves relative Markdown links, anchors, root pages, and deployment base
   assert.equal(documentLink('settings/display.md', source, '/vy/'), '/vy/reference/settings/display/');
   assert.equal(documentLink('../index.md', source, '/vy/'), '/vy/');
   assert.equal(documentLink('../index.md', source), '/');
+  assert.equal(documentLink('../changelog.mdx#unreleased', source, '/vy/'), '/vy/changelog/#unreleased');
+});
+
+test('omits the imported changelog title while preserving release headings and other documents', () => {
+  const changelog = fileURLToPath(new URL('../../../CHANGELOG.md', import.meta.url));
+  for (const file of [changelog, source]) {
+    const tree = { type: 'root', children: [
+      { type: 'heading', depth: 1, children: [] },
+      { type: 'heading', depth: 2, children: [] },
+    ] };
+    remarkDocs()(tree, { path: file });
+    assert.deepEqual(tree.children.map(({ depth }) => depth), file === changelog ? [2] : [1, 2]);
+  }
 });
 
 test('preserves external URLs, fragments, and non-Markdown assets', () => {

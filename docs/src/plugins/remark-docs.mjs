@@ -2,23 +2,28 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const contentDirectory = fileURLToPath(new URL('../content/docs/', import.meta.url));
+const changelogFile = fileURLToPath(new URL('../../../CHANGELOG.md', import.meta.url));
 
 // Keep GitHub-readable .md links in source, and emit base-aware site URLs at build time.
 export function documentLink(url, sourceFile, base = '/') {
   if (/^(?:[a-z][\w+.-]*:|\/\/|#)/i.test(url)) return url;
-  const match = url.match(/^([^?#]+\.md)([?#].*)?$/);
+  const match = url.match(/^([^?#]+\.mdx?)([?#].*)?$/);
   if (!match) return url;
   const target = path.resolve(path.dirname(sourceFile), match[1]);
   const relative = path.relative(contentDirectory, target);
   if (relative.startsWith('..') || path.isAbsolute(relative)) {
     throw new Error(`Document link is outside the content directory: ${url}`);
   }
-  const route = relative.replaceAll(path.sep, '/').replace(/(?:^|\/)index\.md$|\.md$/g, '');
+  const route = relative.replaceAll(path.sep, '/').replace(/(?:^|\/)index\.mdx?$|\.mdx?$/g, '');
   return `${base.replace(/\/$/, '')}/${route}${route ? '/' : ''}${match[2] || ''}`;
 }
 
 export default function remarkDocs({ base = '/' } = {}) {
   return (tree, file) => {
+    // Starlight supplies the page title when the root changelog is imported.
+    if (file.path === changelogFile && tree.children[0]?.type === 'heading' && tree.children[0].depth === 1) {
+      tree.children.shift();
+    }
     function visit(node) {
       if (node.type === 'image' && node.url.startsWith('/demos/')) {
         node.url = `${base.replace(/\/$/, '')}${node.url}`;

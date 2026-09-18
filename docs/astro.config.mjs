@@ -69,6 +69,7 @@ export default defineConfig({
             { label: 'vs fx, jless', slug: 'reference/comparison' },
           ],
         },
+        { label: 'Changelog', slug: 'changelog' },
         { label: 'Development', items: [{ autogenerate: { directory: 'development' } }] },
       ],
     }),

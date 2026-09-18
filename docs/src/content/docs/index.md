@@ -9,6 +9,8 @@ vy is a terminal viewer for exploring JSON and YAML. Browse trees, search, extra
 
 Start with [Getting started](getting-started.md) for installation and basic usage.
 
+See the [Changelog](changelog.mdx) for release notes and upcoming changes.
+
 ## Guides
 
 | Guide | Topics |
